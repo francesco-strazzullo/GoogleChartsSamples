@@ -1,0 +1,104 @@
+<html>
+    <head>
+        <title>Combo Chart</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script type="text/javascript">
+
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+
+            function createAverageRoleRow(employers, roles, gender) {
+                //come prima cosa prendo gli impiegati del sesso scelto
+                var employersOfGender = _.where(employers, {gender: gender});
+
+                var row = [];
+                
+                /*
+                 * Per ogni ruolo mi calcolo la media dei redditi
+                 */
+                _.each(roles, function(role) {
+                    var employersOfRole = _.where(employersOfGender, {role: role});
+                    
+                    var sum = _.reduce(employersOfRole, function(memo, element) {
+                        return memo + element.annualIncome;
+                    }, 0);
+                    
+                    var averageOfRole = sum ? sum / employersOfRole.length : 0;
+                    
+                    row.push(averageOfRole);
+                });
+
+                //Calcolo poi la media annuale
+                var totalAverage = _.reduce(row, function(memo, income) {
+                    return memo + income;
+                }, 0) / row.length;
+
+                row.push(totalAverage);
+
+                //la prima colonna deve essere il sesso
+                row.unshift(gender);
+
+                return row;
+            }
+            
+            function enumerateRoles(employers){
+                var roles = [];
+
+                _.each(employers, function(employer) {
+                    if (!_.contains(roles, employer.role)) {
+                        roles.push(employer.role);
+                    }
+                });
+                
+                return roles;
+            }
+
+            function createComboChart(employers, container) {
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Gender');
+
+                var roles = enumerateRoles(employers);
+
+                //Create Header
+                _.each(roles, function(roleName) {
+                    data.addColumn('number', roleName);
+                });
+
+                data.addColumn('number', "Average");
+
+                data.addRow(createAverageRoleRow(employers, roles, "male"));
+                data.addRow(createAverageRoleRow(employers, roles, "female"));
+                
+                console.log(data.toJSON());
+
+                var chart = new google.visualization.ComboChart(container);
+
+                var options = {
+                    vAxis: {title: "Income", format: '\u20AC #,###'},
+                    hAxis: {title: "Gender"},
+                    height: 500,
+                    seriesType: "bars",
+                    colors: ['red', 'blue', 'pink', 'orange', 'green', 'yellow', 'black'],
+                    series: {6: {type: "line"}}
+                };
+
+
+                chart.draw(data, options);
+
+            }
+
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    createComboChart(data, document.getElementById('chart_here'));
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="chart_here"></div>
+    </body>
+</html>

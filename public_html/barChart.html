@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>Bar Chart</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1.0', {'packages': ['corechart']});
+
+            function formatCurrency(dataTable,columnIndex){
+                /*
+                 * Uso un formatter per formattare il valore che mi fa da tooltip nel formato
+                 * '€ 20.000,00'. NB: \u20AC è il valore Unicode del simbolo '€'
+                 */
+                var formatter = new google.visualization.NumberFormat({
+                    decimalSymbol: ',',
+                    groupingSymbol: '.',
+                    prefix: '\u20AC '
+                });
+                
+                formatter.format(dataTable,columnIndex);
+            }
+            
+            function createBarChart(employers, container) {
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Name');
+                data.addColumn('number', 'Annual income');
+                //Creo una colonna che non comparità nel grafico ma mi farà da tooltip
+                data.addColumn({type: 'number', role: 'tooltip'});
+
+                data.addRows(_.map(employers, function(employer) {
+                    
+                    var toReturn = [];
+                    
+                    toReturn.push(employer.name + ' (' + employer.role + ')');
+                    toReturn.push(employer.annualIncome);
+                    //Replico l'ultima colonna: il mio tooltip sarà il redditro annuo
+                    toReturn.push(employer.annualIncome);
+                    
+                    return toReturn;
+                }));
+                
+                formatCurrency(data,2);
+
+                var chart = new google.visualization.BarChart(container);
+
+                var options = {
+                    title: 'ACME Employers',
+                    hAxis: {
+                        format: '\u20AC #,###'
+                    },
+                    legend: {position: 'none'},
+                    'width': 1200,
+                    'height': 1000
+                };
+
+                chart.draw(data, options);
+
+            }
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    createBarChart(data, document.getElementById('chart_here'));
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="chart_here"></div>
+    </body>
+</html>

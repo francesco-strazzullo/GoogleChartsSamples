@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <!--Load the AJAX API-->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script type="text/javascript">
+
+            //Load Table Chart API
+            google.load('visualization', '1', {packages: ['corechart']});
+
+            function createPieChart(emplyoers,container) {
+                
+                var genderData = new google.visualization.DataTable();
+
+                //Creo intestazione DataTable
+                genderData.addColumn('string', 'Gender');
+                genderData.addColumn('number', 'Number');
+                
+                var maleEmplyoers = 0;
+                var femaleEmplyoers = 0;
+                
+                /*
+                 * Scorro la lista di employers,
+                 * ed incremento i due contatori
+                 */
+                _.each(emplyoers,function(emplyoer){
+                    if("male" === emplyoer.gender){
+                        maleEmplyoers++;
+                    }else{
+                        femaleEmplyoers++;
+                    }
+                });
+                
+                //Aggiungo le righe alla mia datatable
+                genderData.addRow(['male',maleEmplyoers]);
+                genderData.addRow(['female',femaleEmplyoers]);
+                
+                var chart = new google.visualization.PieChart(container);
+                
+                /*
+                 * L'oggetto options mi serve per impostare vari settaggi del
+                 * grafico, in questo caso i colori delle slices.
+                 */
+                var options = {
+                    colors: ['blue','pink']
+                };
+                
+                //Disegno infine l grafico
+                chart.draw(genderData,options);
+
+            }
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    createPieChart(data,document.getElementById('chart_here'));
+                });
+            });
+
+
+        </script>
+        <title>Pie Chart</title>
+    </head>
+
+    <body>
+        <div id="chart_here"></div>
+    </body>
+</html>

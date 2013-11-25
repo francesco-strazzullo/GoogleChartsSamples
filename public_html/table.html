@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <title>Table Chart</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script src="lib/scripts.js"></script>
+        <script type="text/javascript">
+           
+            google.load('visualization', '1', {packages: ['table']});
+
+            function findBoss(employers,employer){
+                var boss = _.find(employers,function(innerElement){
+                            return employer.boss === innerElement.id;
+                        });
+                return boss ? boss.name : undefined;
+            }
+
+            function createTable(employers, container) {
+                
+                var data = new google.visualization.DataTable();
+                
+                data.addColumn('string', 'Name');
+                data.addColumn('string', 'Role');
+                data.addColumn('string', 'Gender');
+                data.addColumn('number', 'Age');
+                data.addColumn('number', 'Annual income');
+                data.addColumn('string', 'Boss');
+                
+                data.addRows(_.map(employers, function(element) {
+                    return [element.name,
+                        element.role,
+                        element.gender,
+                        element.age,
+                        element.annualIncome,
+                        findBoss(employers,element)];
+                }));
+                
+                formatCurrency(data,4);
+
+                var chart = new google.visualization.Table(container);
+
+                chart.draw(data, {showRowNumber: true});
+
+            }
+
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    createTable(data, document.getElementById('chart_here'));
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="chart_here"></div>
+    </body>
+</html>

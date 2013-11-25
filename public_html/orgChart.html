@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Bar Chart</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1', {packages:['orgchart']});
+            
+            function createOrgChart(employers, container) {
+                 var data = new google.visualization.DataTable();
+                
+                data.addColumn('string', 'Id');
+                data.addColumn('string', 'Boss');
+                
+                data.addRows(_.map(employers, function(employer) {
+                    return [
+                            {v: employer.id.toString(), f: employer.name},
+                            typeof(employer.boss) === "number" ? employer.boss.toString() : ''];
+                }));
+
+                var chart = new google.visualization.OrgChart(container);
+
+                chart.draw(data);
+
+
+            }
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    createOrgChart(data, document.getElementById('chart_here'));
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="chart_here"></div>
+    </body>
+</html>

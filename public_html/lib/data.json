@@ -1,0 +1,201 @@
+[
+    {
+        "name": "Blankenship Jordan",
+        "annualIncome": 100000,
+        "gender": "male",
+        "age": 36,
+        "role": "Director",
+        "branch": "Rome",
+        "id": 0
+    },
+    {
+        "name": "Hebert Pratt",
+        "annualIncome": 60000,
+        "gender": "male",
+        "age": 23,
+        "boss": 0,
+        "role": "Project Manager",
+        "branch": "Milan",
+        "id": 1
+    },
+    {
+        "name": "Terra Reed",
+        "annualIncome": 30000,
+        "gender": "female",
+        "age": 35,
+        "boss": 1,
+        "role": "Tester",
+        "branch": "London",
+        "id": 2
+    },
+    {
+        "name": "Shawna Chan",
+        "annualIncome": 40000,
+        "gender": "female",
+        "age": 24,
+        "boss": 1,
+        "role": "Developer",
+        "branch": "Milan",
+        "id": 3
+    },
+    {
+        "name": "Ebony Blair",
+        "annualIncome": 30000,
+        "gender": "female",
+        "age": 36,
+        "boss": 1,
+        "role": "UI Designer",
+        "branch": "Rome",
+        "id": 4
+    },
+    {
+        "name": "Vasquez Valentine",
+        "annualIncome": 50000,
+        "gender": "male",
+        "age": 27,
+        "boss": 1,
+        "role": "Software engineer",
+        "branch": "Palo Alto",
+        "id": 5
+    },
+    {
+        "name": "Lewis Hernandez",
+        "annualIncome": 60000,
+        "gender": "male",
+        "age": 20,
+        "boss": 0,
+        "role": "Project Manager",
+        "branch": "Milan",
+        "id": 6
+    },
+    {
+        "name": "Vinson Garza",
+        "annualIncome": 20000,
+        "gender": "male",
+        "age": 24,
+        "boss": 6,
+        "role": "Tester",
+        "branch": "Palo Alto",
+        "id": 7
+    },
+    {
+        "name": "Bradley Mcknight",
+        "annualIncome": 30000,
+        "gender": "male",
+        "age": 37,
+        "boss": 6,
+        "role": "Developer",
+        "branch": "Milan",
+        "id": 8
+    },
+    {
+        "name": "Burris Davidson",
+        "annualIncome": 30000,
+        "gender": "male",
+        "age": 35,
+        "boss": 6,
+        "role": "UI Designer",
+        "branch": "Rome",
+        "id": 9
+    },
+    {
+        "name": "Dejesus Ward",
+        "annualIncome": 30000,
+        "gender": "male",
+        "age": 38,
+        "boss": 6,
+        "role": "Software engineer",
+        "branch": "Rome",
+        "id": 10
+    },
+    {
+        "name": "Marcie Wong",
+        "annualIncome": 60000,
+        "gender": "female",
+        "age": 39,
+        "boss": 0,
+        "role": "Project Manager",
+        "branch": "Palo Alto",
+        "id": 11
+    },
+    {
+        "name": "Sharon Morin",
+        "annualIncome": 20000,
+        "gender": "female",
+        "age": 29,
+        "boss": 11,
+        "role": "Tester",
+        "branch": "London",
+        "id": 12
+    },
+    {
+        "name": "Owen Whitfield",
+        "annualIncome": 40000,
+        "gender": "male",
+        "age": 34,
+        "boss": 11,
+        "role": "Developer",
+        "branch": "Rome",
+        "id": 13
+    },
+    {
+        "name": "Nash Griffith",
+        "annualIncome": 40000,
+        "gender": "male",
+        "age": 37,
+        "boss": 11,
+        "role": "UI Designer",
+        "branch": "Milan",
+        "id": 14
+    },
+    {
+        "name": "Bettye Duncan",
+        "annualIncome": 50000,
+        "gender": "female",
+        "age": 22,
+        "boss": 11,
+        "role": "Software engineer",
+        "branch": "Palo Alto",
+        "id": 15
+    },
+    {
+        "name": "Elena Hansen",
+        "annualIncome": 50000,
+        "gender": "female",
+        "age": 28,
+        "boss": 0,
+        "role": "Project Manager",
+        "branch": "Milan",
+        "id": 16
+    },
+    {
+        "name": "Newton Ashley",
+        "annualIncome": 50000,
+        "gender": "male",
+        "age": 30,
+        "boss": 16,
+        "role": "Tester",
+        "branch": "Palo Alto",
+        "id": 17
+    },
+    {
+        "name": "Christy Tyson",
+        "annualIncome": 50000,
+        "gender": "female",
+        "age": 31,
+        "boss": 16,
+        "role": "Developer",
+        "branch": "Rome",
+        "id": 18
+    },
+    {
+        "name": "Kerry Gray",
+        "annualIncome": 20000,
+        "gender": "female",
+        "age": 40,
+        "boss": 16,
+        "role": "UI Designer",
+        "branch": "Rome",
+        "id": 19
+    }
+]

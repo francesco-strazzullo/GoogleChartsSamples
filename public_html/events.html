@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Event Handling</title>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script src="lib/jquery-2.0.3.js"></script>
+        <script src="lib/underscore.js"></script>
+        <script src="lib/scripts.js"></script>
+        <script type="text/javascript">
+            google.load('visualization', '1.0', {'packages': ['orgchart', 'table']});
+          
+            function onOrgSelectHandler() {
+                window.tableChart.setSelection(window.orgChart.getSelection());
+            }
+            
+            function onTableSelectHandler() {
+                window.orgChart.setSelection(window.tableChart.getSelection());
+            }
+
+            function createTable(employers, container) {
+
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Name');
+                data.addColumn('string', 'Role');
+                data.addColumn('string', 'Gender');
+                data.addColumn('number', 'Age');
+                data.addColumn('number', 'Annual income');
+                data.addColumn('string', 'Boss');
+
+                data.addRows(_.map(employers, function(element) {
+                    return [element.name,
+                        element.role,
+                        element.gender,
+                        element.age,
+                        element.annualIncome,
+                        findBoss(employers, element)];
+                }));
+
+                formatCurrency(data, 4);
+
+                var chart = new google.visualization.Table(container);
+                
+                google.visualization.events.addListener(chart, 'select',onTableSelectHandler);
+
+                chart.draw(data, {showRowNumber: true});
+
+                return chart;
+
+            }
+
+            function createOrgChart(employers, container) {
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Id');
+                data.addColumn('string', 'Boss');
+
+                data.addRows(_.map(employers, function(employer) {
+                    return [
+                        {v: employer.id.toString(), f: employer.name},
+                        typeof (employer.boss) === "number" ? employer.boss.toString() : ''];
+                }));
+
+                var chart = new google.visualization.OrgChart(container);
+
+                google.visualization.events.addListener(chart, 'select', onOrgSelectHandler);
+
+                chart.draw(data);
+
+                return chart;
+            }
+
+            jQuery(document).ready(function() {
+                jQuery.getJSON('lib/data.json', function(data) {
+                    window.orgChart = createOrgChart(data, document.getElementById('org_here'));
+                    window.tableChart = createTable(data, document.getElementById('table_here'));
+                });
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="org_here"></div>
+        <div id="table_here"></div>
+    </body>
+</html>
