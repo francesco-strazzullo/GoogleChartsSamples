@@ -1,12 +1,11 @@
 <html>
     <head>
-        <!--Load the AJAX API-->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script src="lib/jquery-2.0.3.js"></script>
         <script src="lib/underscore.js"></script>
         <script type="text/javascript">
 
-            //Load Table Chart API
+            //Carico le API
             google.load('visualization', '1', {packages: ['corechart']});
 
             function createPieChart(emplyoers,container) {
@@ -46,7 +45,7 @@
                     colors: ['blue','pink']
                 };
                 
-                //Disegno infine l grafico
+                //Disegno infine il grafico
                 chart.draw(genderData,options);
 
             }
