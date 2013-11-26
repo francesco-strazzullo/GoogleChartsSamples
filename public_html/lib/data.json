@@ -5,7 +5,6 @@
         "gender": "male",
         "age": 36,
         "role": "Director",
-        "branch": "Rome",
         "id": 0
     },
     {
@@ -15,7 +14,6 @@
         "age": 23,
         "boss": 0,
         "role": "Project Manager",
-        "branch": "Milan",
         "id": 1
     },
     {
@@ -25,7 +23,6 @@
         "age": 35,
         "boss": 1,
         "role": "Tester",
-        "branch": "London",
         "id": 2
     },
     {
@@ -35,7 +32,6 @@
         "age": 24,
         "boss": 1,
         "role": "Developer",
-        "branch": "Milan",
         "id": 3
     },
     {
@@ -45,7 +41,6 @@
         "age": 36,
         "boss": 1,
         "role": "UI Designer",
-        "branch": "Rome",
         "id": 4
     },
     {
@@ -55,7 +50,6 @@
         "age": 27,
         "boss": 1,
         "role": "Software engineer",
-        "branch": "Palo Alto",
         "id": 5
     },
     {
@@ -65,7 +59,6 @@
         "age": 20,
         "boss": 0,
         "role": "Project Manager",
-        "branch": "Milan",
         "id": 6
     },
     {
@@ -75,7 +68,6 @@
         "age": 24,
         "boss": 6,
         "role": "Tester",
-        "branch": "Palo Alto",
         "id": 7
     },
     {
@@ -85,7 +77,6 @@
         "age": 37,
         "boss": 6,
         "role": "Developer",
-        "branch": "Milan",
         "id": 8
     },
     {
@@ -95,7 +86,6 @@
         "age": 35,
         "boss": 6,
         "role": "UI Designer",
-        "branch": "Rome",
         "id": 9
     },
     {
@@ -105,7 +95,6 @@
         "age": 38,
         "boss": 6,
         "role": "Software engineer",
-        "branch": "Rome",
         "id": 10
     },
     {
@@ -115,7 +104,6 @@
         "age": 39,
         "boss": 0,
         "role": "Project Manager",
-        "branch": "Palo Alto",
         "id": 11
     },
     {
@@ -125,7 +113,6 @@
         "age": 29,
         "boss": 11,
         "role": "Tester",
-        "branch": "London",
         "id": 12
     },
     {
@@ -135,7 +122,6 @@
         "age": 34,
         "boss": 11,
         "role": "Developer",
-        "branch": "Rome",
         "id": 13
     },
     {
@@ -145,7 +131,6 @@
         "age": 37,
         "boss": 11,
         "role": "UI Designer",
-        "branch": "Milan",
         "id": 14
     },
     {
@@ -155,7 +140,6 @@
         "age": 22,
         "boss": 11,
         "role": "Software engineer",
-        "branch": "Palo Alto",
         "id": 15
     },
     {
@@ -165,7 +149,6 @@
         "age": 28,
         "boss": 0,
         "role": "Project Manager",
-        "branch": "Milan",
         "id": 16
     },
     {
@@ -175,7 +158,6 @@
         "age": 30,
         "boss": 16,
         "role": "Tester",
-        "branch": "Palo Alto",
         "id": 17
     },
     {
@@ -185,7 +167,6 @@
         "age": 31,
         "boss": 16,
         "role": "Developer",
-        "branch": "Rome",
         "id": 18
     },
     {
@@ -195,7 +176,6 @@
         "age": 40,
         "boss": 16,
         "role": "UI Designer",
-        "branch": "Rome",
         "id": 19
     }
 ]
