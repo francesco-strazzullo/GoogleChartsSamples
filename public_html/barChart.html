@@ -9,7 +9,7 @@
 
             function formatCurrency(dataTable,columnIndex){
                 /*
-                 * Uso un formatter per formattare il valore che mi fa da tooltip nel formato
+                 * Uso un NumberFormat per fare in modo che il valore che fa da tooltip sia nel formato
                  * '€ 20.000,00'. NB: \u20AC è il valore Unicode del simbolo '€'
                  */
                 var formatter = new google.visualization.NumberFormat({
@@ -26,7 +26,7 @@
 
                 data.addColumn('string', 'Name');
                 data.addColumn('number', 'Annual income');
-                //Creo una colonna che non comparità nel grafico ma mi farà da tooltip
+                //Creo una colonna che non comparirà nel grafico ma farà da tooltip
                 data.addColumn({type: 'number', role: 'tooltip'});
 
                 data.addRows(_.map(employers, function(employer) {
@@ -35,7 +35,7 @@
                     
                     toReturn.push(employer.name + ' (' + employer.role + ')');
                     toReturn.push(employer.annualIncome);
-                    //Replico l'ultima colonna: il mio tooltip sarà il redditro annuo
+                    //Replico id dato nell'ultima colonna: il mio tooltip sarà il redditro annuo
                     toReturn.push(employer.annualIncome);
                     
                     return toReturn;
